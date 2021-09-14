@@ -1,7 +1,7 @@
 resource "azurerm_virtual_machine" "web2" {
-    name                  = "davidweb2"
-    location              = azurerm_resource_group.david-rg.location
-    resource_group_name   = azurerm_resource_group.david-rg.name
+    name                  = "user01web2"
+    location              = azurerm_resource_group.user01-rg.location
+    resource_group_name   = azurerm_resource_group.user01-rg.name
     availability_set_id   = azurerm_availability_set.avset.id
     delete_os_disk_on_termination    = true
     network_interface_ids = [azurerm_network_interface.nic2.id]
@@ -21,9 +21,9 @@ resource "azurerm_virtual_machine" "web2" {
     }
 
  os_profile {
-        computer_name  = "davidweb2"
+        computer_name  = "user01web2"
         admin_username = "azureuser"
-        admin_password = "Pass****"
+        admin_password = "!12345Qqwert"
 	custom_data= file("web.sh")
     }
 
