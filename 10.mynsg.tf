@@ -25,7 +25,41 @@ resource "azurerm_network_security_group" "mynsg" {
         source_address_prefix      = "*"
         destination_address_prefix = "*"
     }
+security_rule {
+        name                       = "SSH-jenskins"
+        priority                   = 3001
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "22"
+        source_address_prefix      = "20.196.223.108"	## Admin 서버 ip주소 혹은 접속하는(or pc) ip주소
+        destination_address_prefix = "*"
+    }
 
+security_rule {
+        name                       = "SSH-home(pc)"
+        priority                   = 4001
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "22"
+        source_address_prefix      = "192.168.6.56"	## Admin 서버 ip주소 혹은 접속하는(or pc) ip주소
+        destination_address_prefix = "*"
+    }
+
+security_rule {
+        name                       = "SSH-adminserver"
+        priority                   = 5001
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "22"
+        source_address_prefix      = "20.196.223.152"	## Admin 서버 ip주소 혹은 접속하는(or pc) ip주소
+        destination_address_prefix = "*"
+    }
     tags = {
         environment = "Terraform Demo"
     }
