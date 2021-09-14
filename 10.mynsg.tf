@@ -39,7 +39,7 @@ security_rule {
 
 security_rule {
         name                       = "SSH-home(pc)"
-        priority                   = 4001
+        priority                   = 3002
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "Tcp"
@@ -51,7 +51,7 @@ security_rule {
 
 security_rule {
         name                       = "SSH-adminserver"
-        priority                   = 5001
+        priority                   = 3003
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "Tcp"
