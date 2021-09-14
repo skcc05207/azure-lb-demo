@@ -1,7 +1,7 @@
 resource "azurerm_virtual_machine" "web1" {
-    name                  = "davidweb1"
-    location              = azurerm_resource_group.david-rg.location
-    resource_group_name   = azurerm_resource_group.david-rg.name
+    name                  = "user01web1"
+    location              = azurerm_resource_group.user01-rg.location
+    resource_group_name   = azurerm_resource_group.user01-rg.name
     availability_set_id   = azurerm_availability_set.avset.id
     delete_os_disk_on_termination    = true
     network_interface_ids = [azurerm_network_interface.nic1.id]
@@ -21,9 +21,9 @@ resource "azurerm_virtual_machine" "web1" {
     }
 
  os_profile {
-        computer_name  = "davidweb1"
+        computer_name  = "user01web1"
         admin_username = "azureuser"    ## 아래 34번 라인의 계정이름과 동일해야 함
-        admin_password = "Pass****"     ## 12자리이상, 특수문자, 숫자, 대문자 조합으로 생성 필요
+        admin_password = "!12345Qqwert"     ## 12자리이상, 특수문자, 숫자, 대문자 조합으로 생성 필요
 	custom_data= file("web.sh")     ## Terraform 실행하는 서버에 존재해야 함, 실행은 만들어지는 VM에서
     }
 
