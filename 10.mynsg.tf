@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "mynsg" {
     name                = "myNetworkSecurityGroup"
-    location            = azurerm_resource_group.david-rg.location
-    resource_group_name = azurerm_resource_group.david-rg.name
+    location            = azurerm_resource_group.user01-rg.location
+    resource_group_name = azurerm_resource_group.user01-rg.name
     
     security_rule {
         name                       = "SSH"
