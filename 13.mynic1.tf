@@ -1,13 +1,13 @@
 resource "azurerm_network_interface" "nic1" {
     name                = "myNIC1"
-    location = azurerm_resource_group.david-rg.location
-    resource_group_name = azurerm_resource_group.david-rg.name
+    location = azurerm_resource_group.user01-rg.location
+    resource_group_name = azurerm_resource_group.user01-rg.name
 
     ip_configuration {
         name                          = "myNicConfiguration1"
-        subnet_id                     = azurerm_subnet.david-subnet1.id
+        subnet_id                     = azurerm_subnet.user01-subnet1.id
         private_ip_address_allocation = "Dynamic"
-#        public_ip_address_id          = azurerm_public_ip.david-publicip.id
+#        public_ip_address_id          = azurerm_public_ip.user01-publicip.id
     }
 
     tags = {
@@ -23,7 +23,7 @@ resource "azurerm_network_interface_security_group_association" "nic-nsg-associa
 resource "azurerm_network_interface_backend_address_pool_association" "backendPool" {
   network_interface_id    = azurerm_network_interface.nic1.id
   ip_configuration_name   = "myNicConfiguration1"
-  backend_address_pool_id = azurerm_lb_backend_address_pool.david-bpepool.id 
+  backend_address_pool_id = azurerm_lb_backend_address_pool.user01-bpepool.id 
 }
 resource "azurerm_network_interface_nat_rule_association" "natrule1" {
   network_interface_id  = azurerm_network_interface.nic1.id
