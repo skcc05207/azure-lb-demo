@@ -1,5 +1,5 @@
-resource "azurerm_resource_group" "david-rg" {
-    name     = "davidrg"
+resource "azurerm_resource_group" "user01-rg" {
+    name     = "user01rg"
     location = "koreacentral"
 
     tags = {
